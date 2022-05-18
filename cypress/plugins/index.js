@@ -20,3 +20,8 @@ module.exports = (on, config) => {
   // `on` is used to hook into various events Cypress emits
   // `config` is the resolved Cypress config
 };
+
+const randomiseTests = require("cypress-random-test-order/randomise");
+module.exports = (on, config) => {
+  on("file:preprocessor", randomiseTests(config));
+};
